@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Valentine 💖</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <!-- Heart top / her photo top -->
+      <div class="heart-container">
+        <div class="heart" id="topHeart">❤️</div>
+        <img src="../val/pic/favour.jpeg" alt="Favour" class="her-photo-top" id="topPhoto">
+      </div>
+
+      <h1 id="question">
+        <span class="her-name">Favour</span>, will you be my val?
+      </h1>
+
+      <p id="text">
+        Not just today.  
+        Not just on Valentine’s.  
+        But in every moment, every future.
+      </p>
+
+      <div class="buttons">
+        <button class="yes-btn" onclick="sayYes()">Yes 💕</button>
+        <button class="no-btn" onmouseover="dodgeNo()">No 😒</button>
+      </div>
+
+      <!-- Her photo below buttons -->
+      <!-- <img src="favour.jpg" alt="Favour" class="her-photo" id="herPhoto"> -->
+
+      <!-- Signature with your photo -->
+      <div class="signature">
+        <img src="../val/pic/ayoken...jpg" alt="You" class="your-photo">
+        <span class="name">— Yours, always.- Ayoken.Dev</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.onload = () => {
+      document.body.classList.add("loaded");
+    };
+
+    function sayYes() {
+      document.getElementById("question").innerText = "AWWWN you said YES 💍❤️";
+      document.getElementById("text").innerText =
+        "This is the beginning of our forever.\nHappy Valentine’s Day, my love 💕";
+
+      const heart = document.getElementById("topHeart");
+      const photo = document.getElementById("topPhoto");
+
+      // Fade out heart
+      heart.style.transition = "opacity 0.8s ease";
+      heart.style.opacity = "0";
+
+      setTimeout(() => {
+        heart.style.display = "none";
+        photo.style.display = "block";
+        photo.style.opacity = "0";
+        photo.style.transform = "scale(0.8)";
+        photo.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        setTimeout(() => {
+          photo.style.opacity = "1";
+          photo.style.transform = "scale(1)";
+        }, 50);
+      }, 800);
+
+      // Show bottom her photo
+    //   document.getElementById("herPhoto").classList.add("show");
+
+      // Heart confetti
+      for (let i = 0; i < 20; i++) {
+        const heartFloat = document.createElement("div");
+        heartFloat.className = "heart-float";
+        heartFloat.innerText = "❤️";
+        heartFloat.style.left = Math.random() * 100 + "vw";
+        heartFloat.style.bottom = "0px";
+        document.body.appendChild(heartFloat);
+        setTimeout(() => heartFloat.remove(), 5000);
+      }
+    }
+
+    function dodgeNo() {
+      const noBtn = document.querySelector(".no-btn");
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+  </script>
+
+</body>
+</html>
